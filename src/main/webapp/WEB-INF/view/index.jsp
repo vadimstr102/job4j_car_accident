@@ -23,6 +23,9 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 <div class="container pt-3">
+    <div class="row mb-3">
+        <a href="<c:url value='/create'/>">Добавить инцидент</a>
+    </div>
     <div class="row">
         <div class="col">
             <table class="table table-hover table-striped">
