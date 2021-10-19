@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
 <!doctype html>
 <html lang="en">
@@ -29,18 +29,26 @@
                 <thead>
                 <tr class="table-dark">
                     <th scope="col">№</th>
-                    <th scope="col">Пользователь</th>
+                    <th scope="col">Имя нарушителя</th>
+                    <th scope="col">Описание нарушения</th>
+                    <th scope="col">Адрес совершения нарушения</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:set var="count" value="1"/>
-                <c:forEach items="${users}" var="user">
+                <c:forEach items="${accidents}" var="accident">
                     <tr>
                         <th scope="row">
                             <c:out value="${count}"/>
                         </th>
                         <td>
-                            <c:out value="${user}"/>
+                            <c:out value="${accident.name}"/>
+                        </td>
+                        <td>
+                            <c:out value="${accident.text}"/>
+                        </td>
+                        <td>
+                            <c:out value="${accident.address}"/>
                         </td>
                     </tr>
                     <c:set var="count" value="${count + 1}"/>
