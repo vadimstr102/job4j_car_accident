@@ -35,6 +35,7 @@
                     <th scope="col">Имя нарушителя</th>
                     <th scope="col">Описание нарушения</th>
                     <th scope="col">Адрес совершения нарушения</th>
+                    <th scope="col">Тип нарушения</th>
                     <th scope="col">Редактирование</th>
                 </tr>
                 </thead>
@@ -53,6 +54,9 @@
                         </td>
                         <td>
                             <c:out value="${accident.address}"/>
+                        </td>
+                        <td>
+                            <c:out value="${accident.type.name}"/>
                         </td>
                         <td>
                             <a href="<c:url value='/update?id=${accident.id}'/>">Редактировать</a>
