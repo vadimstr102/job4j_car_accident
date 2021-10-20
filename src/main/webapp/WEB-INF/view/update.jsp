@@ -1,41 +1,79 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Accident</title>
+</head>
 <body>
-<form action="<c:url value='/save?id=${accident.id}'/>" method='POST'>
-    <table>
-        <tr>
-            <td>Имя нарушителя:</td>
-            <td><input type='text' name='name' value="<c:out value="${accident.name}"/>"></td>
-        </tr>
-        <tr>
-            <td>Описание нарушения:</td>
-            <td><input type='text' name='text' value="<c:out value="${accident.text}"/>"></td>
-        </tr>
-        <tr>
-            <td>Адрес совершения нарушения:</td>
-            <td><input type='text' name='address' value="<c:out value="${accident.address}"/>"></td>
-        </tr>
-        <tr>
-            <td>Тип:</td>
-            <td>
-                <select name="type.id">
-                    <c:forEach items="${types}" var="type">
-                        <c:if test="${type.id == accident.type.id}">
-                            <option value="<c:out value="${type.id}"/>" selected><c:out value="${type.name}"/></option>
-                        </c:if>
-                        <c:if test="${type.id != accident.type.id}">
-                            <option value="<c:out value="${type.id}"/>"><c:out value="${type.name}"/></option>
-                        </c:if>
-                    </c:forEach>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="submit" type="submit" value="Сохранить"/></td>
-        </tr>
-    </table>
-</form>
+<!--jQuery-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+<div class="container pt-3">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">
+                    Редактирование нарушения
+                </div>
+                <div class="card-body">
+                    <form action="<c:url value='/save?id=${accident.id}'/>" method='POST'>
+                        <div class="form-group mb-3">
+                            <label for="name" class="form-label">Имя нарушителя</label>
+                            <input type="text" class="form-control" id="name" name="name" value="<c:out value="${accident.name}"/>">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="text" class="form-label">Описание нарушения</label>
+                            <input type="text" class="form-control" id="text" name="text" value="<c:out value="${accident.text}"/>">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="address" class="form-label">Адрес совершения нарушения</label>
+                            <input type="text" class="form-control" id="address" name="address" value="<c:out value="${accident.address}"/>">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="type.id" class="form-label">Тип нарушения</label>
+                            <select class="form-select" id="type.id" name="type.id" title="Выберите тип нарушения">
+                                <c:forEach items="${types}" var="type">
+                                    <c:if test="${type.id == accident.type.id}">
+                                        <option value="<c:out value="${type.id}"/>" selected><c:out value="${type.name}"/></option>
+                                    </c:if>
+                                    <c:if test="${type.id != accident.type.id}">
+                                        <option value="<c:out value="${type.id}"/>"><c:out value="${type.name}"/></option>
+                                    </c:if>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="rulesIds" class="form-label">Статьи нарушения</label>
+                            <select class="form-select" id="rulesIds" name="rulesIds" title="Выберите статьи нарушения" multiple>
+                                <c:forEach items="${rules}" var="rule">
+                                    <option value="<c:out value="${rule.id}"/>"><c:out value="${rule.name}"/></option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

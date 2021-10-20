@@ -24,7 +24,9 @@
 
 <div class="container pt-3">
     <div class="row mb-3">
-        <a href="<c:url value='/create'/>">Добавить инцидент</a>
+        <div class="col text-end">
+            <a href="<c:url value='/create'/>" class="btn btn-success btn-sm" role="button">Добавить инцидент</a>
+        </div>
     </div>
     <div class="row">
         <div class="col">
@@ -36,6 +38,7 @@
                     <th scope="col">Описание нарушения</th>
                     <th scope="col">Адрес совершения нарушения</th>
                     <th scope="col">Тип нарушения</th>
+                    <th scope="col">Статьи нарушения</th>
                     <th scope="col">Редактирование</th>
                 </tr>
                 </thead>
@@ -59,7 +62,14 @@
                             <c:out value="${accident.type.name}"/>
                         </td>
                         <td>
-                            <a href="<c:url value='/update?id=${accident.id}'/>">Редактировать</a>
+                            <ul>
+                                <c:forEach items="${accident.rules}" var="rule">
+                                    <li><c:out value="${rule.name}"/></li>
+                                </c:forEach>
+                            </ul>
+                        </td>
+                        <td class="text-center align-middle">
+                            <a href="<c:url value='/update?id=${accident.id}'/>" class="btn btn-success btn-sm" role="button">Редактировать</a>
                         </td>
                     </tr>
                     <c:set var="count" value="${count + 1}"/>
