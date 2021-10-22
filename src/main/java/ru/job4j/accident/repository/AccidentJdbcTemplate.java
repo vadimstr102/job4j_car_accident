@@ -15,7 +15,7 @@ import java.sql.Statement;
 import java.util.HashSet;
 import java.util.List;
 
-@Repository
+//@Repository
 public class AccidentJdbcTemplate {
     private final JdbcTemplate jdbc;
 

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.repository.AccidentJdbcTemplate;
+import ru.job4j.accident.repository.AccidentHibernate;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -12,36 +12,36 @@ import java.util.Set;
 
 @Service
 public class AccidentService {
-    private final AccidentJdbcTemplate accidentJdbcTemplate;
+    private final AccidentHibernate accidents;
 
-    public AccidentService(AccidentJdbcTemplate accidentJdbcTemplate) {
-        this.accidentJdbcTemplate = accidentJdbcTemplate;
+    public AccidentService(AccidentHibernate accidents) {
+        this.accidents = accidents;
     }
 
     public void saveAccident(Accident accident, String[] rulesIds) {
-        AccidentType type = accidentJdbcTemplate.findTypeById(accident.getType().getId());
+        AccidentType type = accidents.findTypeById(accident.getType().getId());
         Set<Rule> rules = new HashSet<>();
         for (String id : rulesIds) {
-            rules.add(accidentJdbcTemplate.findRuleById(Integer.parseInt(id)));
+            rules.add(accidents.findRuleById(Integer.parseInt(id)));
         }
         accident.setType(type);
         accident.setRules(rules);
-        accidentJdbcTemplate.saveAccident(accident);
+        accidents.saveAccident(accident);
     }
 
     public Accident findAccidentById(int id) {
-        return accidentJdbcTemplate.findAccidentById(id);
+        return accidents.findAccidentById(id);
     }
 
     public Collection<Accident> findAllAccidents() {
-        return accidentJdbcTemplate.findAllAccidents();
+        return accidents.findAllAccidents();
     }
 
     public Collection<AccidentType> findAllTypes() {
-        return accidentJdbcTemplate.findAllTypes();
+        return accidents.findAllTypes();
     }
 
     public Collection<Rule> findAllRules() {
-        return accidentJdbcTemplate.findAllRules();
+        return accidents.findAllRules();
     }
 }
