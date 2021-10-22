@@ -14,11 +14,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@Configuration
-@PropertySource("classpath:app.properties")
-@EnableTransactionManagement
+//@Configuration
+//@PropertySource("classpath:app.properties")
+//@EnableTransactionManagement
 public class HbmConfig {
-    @Bean
+    //    @Bean
     public DataSource ds(@Value("${jdbc.driver}") String driver,
                          @Value("${jdbc.url}") String url,
                          @Value("${jdbc.username}") String username,
@@ -31,7 +31,7 @@ public class HbmConfig {
         return ds;
     }
 
-    @Bean
+    //    @Bean
     public LocalSessionFactoryBean sessionFactory(@Value("${hibernate.dialect}") String dialect, DataSource ds) {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(ds);
@@ -42,7 +42,7 @@ public class HbmConfig {
         return sessionFactory;
     }
 
-    @Bean
+    //    @Bean
     public PlatformTransactionManager htx(SessionFactory sf) {
         HibernateTransactionManager tx = new HibernateTransactionManager();
         tx.setSessionFactory(sf);
