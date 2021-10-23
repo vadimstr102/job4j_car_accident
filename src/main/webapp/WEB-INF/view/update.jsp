@@ -66,7 +66,7 @@
                         </div>
                         <div class="form-group">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary" onclick="return validate()">Сохранить</button>
+                                <button type="submit" class="btn btn-success" onclick="return validate()">Сохранить</button>
                             </div>
                         </div>
                     </form>

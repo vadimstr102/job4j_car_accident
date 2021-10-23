@@ -23,8 +23,11 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 <div class="container pt-3">
-    <div class="row mb-3">
-        <div class="col text-end">
+    <div class="row justify-content-between mb-3">
+        <div class="col-4">
+            Вы вошли как: <b>${user.username}</b> | <a href="<c:url value='/logout'/>" class="btn btn-success btn-sm" role="button">Выйти</a>
+        </div>
+        <div class="col-4 text-end">
             <a href="<c:url value='/create'/>" class="btn btn-success btn-sm" role="button">Добавить инцидент</a>
         </div>
     </div>

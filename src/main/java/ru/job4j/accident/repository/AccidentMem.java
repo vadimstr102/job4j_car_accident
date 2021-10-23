@@ -1,6 +1,5 @@
 package ru.job4j.accident.repository;
 
-import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
@@ -11,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//@Repository
 public class AccidentMem {
     private final Map<Integer, Accident> accidents = new HashMap<>();
     private final Map<Integer, AccidentType> types = new HashMap<>();
