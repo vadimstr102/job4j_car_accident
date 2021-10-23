@@ -27,10 +27,10 @@
         <div class="col-3">
             <div class="card">
                 <div class="card-header">
-                    Авторизация
+                    Регистрация
                 </div>
                 <div class="card-body">
-                    <form name='login' action="<c:url value='/login'/>" method='POST'>
+                    <form name='login' action="<c:url value='/reg'/>" method='POST'>
                         <div class="form-group mb-3">
                             <label for="username" class="form-label">Имя пользователя</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Введите имя пользователя">
@@ -41,8 +41,7 @@
                         </div>
                         <div class="form-group">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-success">Войти</button>
-                                <a href="<c:url value='/reg'/>" class="btn btn-success" role="button">Регистрация</a>
+                                <button type="submit" class="btn btn-success">Зарегистрироваться</button>
                             </div>
                         </div>
                         <c:if test="${not empty errorMessage}">
